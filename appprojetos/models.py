@@ -11,17 +11,17 @@ class Professor(Membros):
     area_atuacao = models.CharField("Area de atuação", max_length=255)
 
 class Nv_desenvolvimento(models.Model):
-    Estagio = (
-        ('IN', 'Iniciada'),
-        ('DS', 'Desenvolvimento'),
-        ('CO', 'Concluida')
+    ESTAGIO = (
+        ('I', 'Iniciada'),
+        ('D', 'Desenvolvimento'),
+        ('C', 'Concluida'),
     )
-    dt_registro = models.DateField("Data do registro")
+    estagio = models.CharField(max_length=1, choices=ESTAGIO)
     descricao = models.CharField("Descrição", max_length=255)
-    estagio = models.CharField(max_length=2, choices=Estagio)
+    dt_registro = models.DateField("Data do registro")
 
     def __str__(self):
-        return self.estagio
+        return self.descricao
 
 class Atividade(models.Model):
     descricao = models.CharField("Descrição", max_length=255)
